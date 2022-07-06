@@ -1,11 +1,15 @@
 import java.io.File;
+import java.net.URL;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
+import io.appium.java_client.android.AndroidElement;
 
 public class baseClass {
 
 	public static void main(String[] args) {
+		
 		//create object where the source of the demo file is
 		File appDir = new File("src");
 		//create object with the parent file and its name
@@ -18,7 +22,10 @@ public class baseClass {
 		cap.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
 		
 		//uiautomator2 android testing framework
+		cap.setCapability(MobileCapabilityType.AUTOMATION_NAME, "uiautomator2");
 		
+		//give port number 4723
+		AndroidDriver<AndroidElement> driver = new AndroidDriver<>(new URL("http://127.0.0.1.0:4723/wd/hub"),cap);
 		
 	}
 
